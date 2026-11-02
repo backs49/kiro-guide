@@ -1,0 +1,19 @@
+{
+  "name": "kiro-guide",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Kiro IDE · Kiro CLI 한국어 사용자 가이드 (비공식)",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vitepress dev docs",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
+  },
+  "devDependencies": {
+    "vitepress": "1.6.4"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
