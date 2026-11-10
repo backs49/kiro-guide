@@ -1,0 +1,65 @@
+/* 따뜻한 오프화이트 바탕 + 테라코타 포인트 색 */
+:root {
+  --vp-c-brand-1: #a8482a;
+  --vp-c-brand-2: #bf5a37;
+  --vp-c-brand-3: #d06d49;
+  --vp-c-brand-soft: rgba(191, 90, 55, 0.12);
+  --vp-c-bg: #fbfaf7;
+  --vp-c-bg-alt: #f4f2ec;
+  --vp-c-bg-soft: #f2efe8;
+  --vp-font-family-base: 'Pretendard', 'Apple SD Gothic Neo', 'Malgun Gothic', system-ui, -apple-system,
+    'Segoe UI', sans-serif;
+  --vp-font-family-mono: ui-monospace, 'SFMono-Regular', 'JetBrains Mono', Menlo, Consolas, monospace;
+}
+
+.dark {
+  --vp-c-brand-1: #e8916f;
+  --vp-c-brand-2: #d97a56;
+  --vp-c-brand-3: #c96a47;
+  --vp-c-brand-soft: rgba(232, 145, 111, 0.16);
+  --vp-c-bg: #14161b;
+  --vp-c-bg-alt: #101216;
+  --vp-c-bg-soft: #1c1f26;
+}
+
+/* 한국어 제목이 음절 단위로 끊기지 않도록 */
+.VPHero .name,
+.VPHero .text,
+.VPHero .tagline,
+.VPFeature .details,
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3 {
+  word-break: keep-all;
+}
+
+/* 한국어 본문 가독성 */
+.vp-doc p,
+.vp-doc li {
+  line-height: 1.8;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* 표가 모바일에서 넘치지 않도록 */
+.vp-doc table {
+  display: block;
+  overflow-x: auto;
+}
+
+/* "TODO(확인 필요)" 박스 강조 */
+.vp-doc .custom-block.warning .custom-block-title {
+  letter-spacing: 0.01em;
+}
+
+/* 난이도 배지 */
+.level {
+  display: inline-block;
+  padding: 0 8px;
+  margin-right: 6px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
