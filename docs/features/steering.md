@@ -4,6 +4,7 @@ sources:
   - https://kiro.dev/docs/cli/steering/
   - https://kiro.dev/docs/cli/v3/new-features/
   - https://kiro.dev/docs/ide/chat/slash-commands/
+  - https://kiro.dev/changelog/ide/1-4-86/
 ---
 
 # Steering
@@ -88,8 +89,11 @@ inclusion: manual
 | 환경 | 지원 포함 모드 |
 |------|----------------|
 | Kiro IDE | always, fileMatch, manual, auto |
-| CLI 3.0 | always, fileMatch, manual, auto |
-| CLI 2.x(V1/V2 엔진) | `always`만 자동 로딩. `fileMatch`·`manual` 파일은 자동 로딩에서 제외 |
+| CLI V3 하네스 (3.0.0+ 기본) | always, fileMatch, manual, auto |
+| CLI V2 하네스 | `always`만 자동 로딩. `fileMatch`·`manual` 파일은 자동 로딩에서 제외 |
+
+- IDE 1.4.86(2026-11-02)부터 Kiro가 **제대로 쓰지 못한 Steering 파일에 경고**를 표시합니다. 경고가 보이면 front matter 형식과 패턴을 확인하세요.
+- CLI V3에서는 워크스페이스를 신뢰하기 전까지 그 폴더의 Steering을 로드하지 않습니다.
 
 ## 좋은 Steering 작성 요령
 

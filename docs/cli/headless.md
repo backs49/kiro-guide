@@ -4,6 +4,9 @@ sources:
   - https://kiro.dev/docs/getting-started/authentication/
   - https://kiro.dev/blog/introducing-headless-mode/
   - https://kiro.dev/changelog/cli/2-0/
+  - https://kiro.dev/docs/cli/agent-harness/
+  - https://kiro.dev/changelog/cli/3-0/
+  - https://kiro.dev/docs/permissions/
 ---
 
 # Headless 모드 (스크립트·CI 연동)
@@ -21,6 +24,16 @@ printf '%s\n' "src/main/java 의 TODO 주석을 파일별로 정리해 줘" | ki
 ```
 
 - Headless 모드에서는 TUI를 쓸 수 없습니다.
+
+::: warning 어떤 하네스로 실행되나 (CLI 3.0.0+)
+대화형은 V3가 기본이지만, Headless는 다릅니다.
+
+- `--trust-all-tools`를 쓰는 스크립트 → **V3**
+- 그 밖의 스크립트 → **V2**
+- Classic을 지정한 Headless 실행은 Headless 기본값으로 옮겨지고 알림이 출력됩니다.
+
+CI 결과가 로컬과 다르면 어느 하네스로 실행됐는지 먼저 확인하세요. 하네스를 고정하려면 `--v2`/`--v3` 플래그를 쓸 수 있습니다. → [CLI V3와 V2 하네스](./v2-vs-v3.md)
+:::
 - 도구 승인을 사람이 할 수 없으므로 필요한 도구를 미리 신뢰해야 합니다.
 
 ```bash
@@ -30,6 +43,8 @@ kiro-cli chat --no-interactive --trust-tools=read,grep "..."
 # 모든 도구 신뢰 (격리된 CI 러너에서만)
 kiro-cli chat --no-interactive --trust-all-tools "..."
 ```
+
+반복해서 쓰는 정책이라면 플래그 대신 범위를 좁힌 `permissions.yaml` allow 규칙을 쓰는 방법을 공식 문서가 권장합니다. → [Permissions](/features/permissions)
 
 ## 인증: API 키
 
@@ -80,7 +95,7 @@ jobs:
 
 ::: warning TODO(확인 필요)
 - 설치 스크립트가 `kiro-cli`를 설치하는 경로와, CI 러너에서 `PATH`에 추가가 필요한지 여부.
-- `--trust-tools`에 쓰는 도구 이름 목록(`read`, `grep` 외)과 CLI 3.0에서의 동작 차이.
+- `--trust-tools`에 쓰는 도구 이름 목록(`read`, `grep` 외)과 V3 하네스에서의 동작 차이.
 - Headless 예시에 등장하는 `--sandbox`, `--cloud` 플래그의 정확한 의미.
 :::
 

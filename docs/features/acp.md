@@ -5,6 +5,8 @@ sources:
   - https://kiro.dev/blog/kiro-adopts-acp/
   - https://kiro.dev/docs/cli/v3/acp-migration/
   - https://kiro.dev/docs/upgrade-guides/migrating-from-q-developer/
+  - https://kiro.dev/docs/cli/agent-harness/
+  - https://kiro.dev/changelog/cli/2-36/
 ---
 
 # ACP (다른 에디터에서 Kiro 쓰기)
@@ -45,7 +47,15 @@ kiro-cli acp --agent <AGENT_NAME> # 특정 Custom agent로 실행
 
 Zed는 ACP를 기본 지원합니다. `~/.config/zed/settings.json`에 사용자 지정 에이전트 항목을 추가한 뒤, AI 패널의 에이전트 선택기에서 Kiro를 고릅니다.
 
-## ACP 클라이언트 개발자용 (CLI 3.0)
+## 어떤 하네스로 실행되나
+
+CLI 3.0.0부터 `kiro-cli acp`는 하네스를 지정하지 않으면 **V3**로 시작합니다. 단, 실행 인자에 V2 전용 플래그가 있거나 Kiro가 V2가 필요한 클라이언트로 인식하면 V2로 시작합니다. CLI 2.36.0에서 ACP 엔진 설정이 추가되었습니다.
+
+::: warning TODO(확인 필요)
+CLI 2.36.0에서 추가된 ACP 엔진 설정의 이름과 값.
+:::
+
+## ACP 클라이언트 개발자용 (V3)
 
 직접 ACP 클라이언트를 만드는 경우, 3.0 마이그레이션 가이드는 `--agent-engine=v3`, `--auth-method=cli` 옵션으로 서버를 띄우고 인증은 CLI가 담당하는 방식을 권장합니다. 자세한 내용은 [ACP client migration](https://kiro.dev/docs/cli/v3/acp-migration/)을 보세요.
 

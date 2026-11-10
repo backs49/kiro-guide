@@ -42,7 +42,7 @@ sources:
 에이전트가 파일을 수정하면 변경 내용(diff)이 표시됩니다. IDE의 **Checkpoints** 기능을 쓰면 코드베이스와 대화를 이전 시점으로 되돌릴 수 있습니다.
 
 ::: tip Checkpoints는 Git을 대체하지 않습니다
-Checkpoints는 Kiro 안에서의 되돌리기 기능입니다. 의미 있는 단위마다 Git 커밋을 남기는 습관을 유지하세요. CLI 3.0에는 Checkpoints가 없고 `/rewind`와 Git으로 되돌립니다. → [CLI 2.x와 3.0](/cli/v2-vs-v3)
+Checkpoints는 Kiro 안에서의 되돌리기 기능입니다. 의미 있는 단위마다 Git 커밋을 남기는 습관을 유지하세요. CLI V3 하네스(3.0.0부터 기본)에는 Checkpoints가 없고 `/rewind`와 Git으로 되돌립니다. → [CLI V3와 V2 하네스](/cli/v2-vs-v3)
 :::
 
 ## 요청을 잘 쓰는 법

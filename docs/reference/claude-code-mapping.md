@@ -16,7 +16,7 @@ sources:
 
 ::: warning 읽기 전에
 - 두 도구는 비슷해 보여도 **동작 방식이 다른 부분**이 있습니다. "대응"은 역할이 비슷하다는 뜻이지 같은 기능이라는 뜻이 아닙니다.
-- Kiro 쪽은 이 가이드의 기준 버전(IDE 1.4.62 / CLI 2.36.0, 3.0 early access)을 따릅니다.
+- Kiro 쪽은 이 가이드의 기준 버전(IDE 1.4.121 / CLI 3.1.0, V3 하네스)을 따릅니다.
 - Claude Code 쪽은 [Claude Code 공식 문서](https://code.claude.com/docs/)의 개념 수준으로만 적었습니다. Claude Code도 업데이트가 잦으므로 세부 동작은 해당 문서를 확인하세요.
 :::
 
@@ -28,15 +28,16 @@ sources:
 | 사용자 전역 규칙 | `~/.claude/CLAUDE.md` | `~/.kiro/steering/*.md` |
 | 이벤트 자동화 | Hooks (`settings.json`) | **Hooks** `.kiro/hooks/*.json` |
 | 외부 도구 연결 | MCP (`.mcp.json` 등) | **MCP** `.kiro/settings/mcp.json` |
-| 재사용 절차 | Skills `.claude/skills/<이름>/SKILL.md` | **Skills** `.kiro/skills/<이름>/SKILL.md` (CLI 3.0) |
+| 재사용 절차 | Skills `.claude/skills/<이름>/SKILL.md` | **Skills** `.kiro/skills/<이름>/SKILL.md` (CLI V3) |
 | 역할별 에이전트 | Subagents `.claude/agents/*.md` | **Custom agents** `.kiro/agents/` (JSON) |
 | 확장 묶음 배포 | Plugins | **Powers** |
-| 계획만 세우기 | Plan mode | **Plan 모드** (CLI 3.0 `Shift+Tab`) |
+| 계획만 세우기 | Plan mode | **Plan 모드** (CLI V3 `Shift+Tab`) |
 | 구조화된 기능 개발 | (별도 기능 없음, 프롬프트·스킬로 구성) | **Specs** (requirements → design → tasks) |
-| 되돌리기 | Checkpoints / rewind | IDE **Checkpoints**, CLI 3.0 `/rewind` |
+| 되돌리기 | Checkpoints / rewind | IDE **Checkpoints**, CLI V3 `/rewind` |
 | 비대화형 실행 | 비대화형(print) 모드 | **Headless** `kiro-cli chat --no-interactive` |
 | 대화 요약 | `/compact` | `/compact` |
-| 권한 | permissions (allow/ask/deny 규칙) | **Permissions** (capability 기반 규칙) |
+| 권한 | permissions (allow/ask/deny 규칙) | **Permissions** (`permissions.yaml`, capability 기반 deny/ask/allow/evaluate 규칙) |
+| 다단계 백그라운드 실행 | — | **Workflows** (`.kiro/workflows/`, `/workflow`) |
 | 다른 에디터 연동 | IDE 확장 등 | **ACP** (`kiro-cli acp`) |
 
 ## 자세한 차이
@@ -57,7 +58,7 @@ sources:
 | | Claude Code | Kiro |
 |---|-------------|------|
 | 정의 위치 | `settings.json`의 hooks 항목 | `.kiro/hooks/*.json` 독립 파일 (v1 스키마) |
-| 이벤트 | 도구 사용 전후, 프롬프트 제출, 세션 시작·종료 등 | `PostFileSave`, `PreTaskExec`(스펙 작업 전) 등. 전체 목록 TODO(확인 필요) |
+| 이벤트 | 도구 사용 전후, 프롬프트 제출, 세션 시작·종료 등 | `PostFileSave`, `PreTaskExec`(스펙 작업 전), `PreCompact`/`PostCompact`(대화 압축 전후) 등. 전체 목록 TODO(확인 필요) |
 | 동작 | 셸 명령 | `command`(셸) 또는 **`agent`(에이전트에 지시문 전달)** |
 | 차단 | 종료 코드로 차단 | `PreTaskExec`에서 종료 코드 `2`로 차단 |
 
@@ -73,7 +74,7 @@ Kiro Hook은 **에이전트 지시(`agent`) 타입**이 있어 "저장하면 리
 
 ### Skills
 
-폴더 + `SKILL.md` + `description`으로 활성화를 판단하는 구조가 비슷합니다. Kiro에서는 CLI 3.0 기준 `.kiro/skills/`에 둡니다. front matter 필수 필드는 Kiro 문서로 다시 확인하세요(TODO(확인 필요)).
+폴더 + `SKILL.md` + `description`으로 활성화를 판단하는 구조가 비슷합니다. Kiro에서는 CLI V3 기준 `.kiro/skills/`에 둡니다. front matter 필수 필드는 Kiro 문서로 다시 확인하세요(TODO(확인 필요)).
 
 ### Subagents ↔ Custom agents
 

@@ -16,7 +16,9 @@ sources:
 | Kiro 홈 | <https://kiro.dev/> |
 | 공식 문서 | <https://kiro.dev/docs/> |
 | CLI 문서 | <https://kiro.dev/docs/cli/> |
-| CLI 3.0 (What's new in V3) | <https://kiro.dev/docs/cli/v3/> |
+| 에이전트 하네스 선택 (V3/V2) | <https://kiro.dev/docs/cli/agent-harness/> |
+| Upgrade from CLI 2.x (V3) | <https://kiro.dev/docs/cli/v3/> |
+| CLI 3.0 출시 블로그 | <https://kiro.dev/blog/cli-3/> |
 | Kiro Web 문서 | <https://kiro.dev/docs/web/> |
 | 자주 묻는 질문 | <https://kiro.dev/faq/> |
 | 요금 | <https://kiro.dev/pricing/> |
@@ -58,6 +60,7 @@ sources:
 | Headless 모드 | <https://kiro.dev/docs/cli/headless/> |
 | ACP | <https://kiro.dev/docs/cli/acp/> |
 | Checkpoints | <https://kiro.dev/docs/checkpoints/> |
+| Workflows | <https://kiro.dev/docs/workflows/> |
 
 ## 이전(마이그레이션)
 
@@ -65,7 +68,7 @@ sources:
 |------|-----|
 | Q Developer에서 이전 | <https://kiro.dev/docs/upgrade-guides/migrating-from-q-developer/> |
 | Q CLI에서 업그레이드 | <https://kiro.dev/docs/upgrade-guides/migrating-from-q/> |
-| CLI 3.0 마이그레이션 | <https://kiro.dev/docs/cli/v3/migration-guide/> |
+| CLI 2.x → V3 마이그레이션 | <https://kiro.dev/docs/cli/v3/migration-guide/> |
 | Amazon Q Developer → Kiro (AWS 문서) | <https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/upgrade-to-kiro.html> |
 | Q Developer IDE 플러그인 지원 종료 (AWS 문서) | <https://docs.aws.amazon.com/amazonq/latest/qdeveloper-ug/q-developer-ide-end-of-support.html> |
 

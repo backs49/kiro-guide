@@ -45,7 +45,7 @@ sources:
 
 Plan 모드는 **읽기 전용**으로 동작하며 프로젝트를 수정하지 않습니다. 구현 전에 계획만 세우고 검토하고 싶을 때 씁니다. 계획을 확정하면 실행 단계로 넘기는데, 클래식 모드에서는 넘기기 전에 확인을 요청합니다.
 
-- CLI 3.0에서는 `Shift+Tab`으로 Plan 모드를 켜고 끕니다.
+- CLI(V3 하네스)에서는 `Shift+Tab`으로 Plan 모드를 켜고 끕니다.
 
 ::: warning TODO(확인 필요)
 IDE에서 Plan 모드를 켜는 정확한 UI 위치는 [Plan mode 문서](https://kiro.dev/docs/specs/plan/)에서 확인 후 추가할 예정입니다.

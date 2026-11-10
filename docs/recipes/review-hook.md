@@ -10,7 +10,7 @@ sources:
 <span class="level">L3</span> 저장할 때마다 가벼운 자동 점검을 하고, 스펙 작업을 시작하기 전에 빌드가 깨져 있지 않은지 확인하는 Hook을 만듭니다. Hook 형식은 [Hooks](/features/hooks) 페이지를 먼저 읽어 보세요.
 
 ::: info 대상 버전
-아래 형식(`.kiro/hooks/*.json`, `v1` 스키마, PascalCase 트리거)은 **IDE 1.0 이상 / CLI 3.0** 기준입니다. CLI 2.x는 Hook을 에이전트 설정 안에 넣는 이전 형식을 씁니다.
+아래 형식(`.kiro/hooks/*.json`, `v1` 스키마, PascalCase 트리거)은 **IDE 1.0 이상 / CLI V3 하네스(3.0.0부터 기본)** 기준입니다. CLI V2 하네스는 Hook을 에이전트 설정 안에 넣는 이전 형식을 씁니다.
 :::
 
 ## Hook 1: 컨트롤러 저장 시 리뷰 코멘트 (agent)

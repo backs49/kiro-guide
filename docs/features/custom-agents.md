@@ -62,10 +62,10 @@ kiro-cli agent create <AGENT_NAME>
 | `resources` | 항상 참고할 파일. `file://` 글롭 패턴 사용 가능 |
 | `mcpServers`, `includeMcpJson`, `toolAliases` | MCP 관련 → [MCP](./mcp.md) |
 | `model` | 사용할 모델 |
-| `permissions` | IDE 1.0+ / CLI 3.0의 capability 기반 권한 → [Permissions](./permissions.md) |
+| `permissions` | IDE 1.0+ / CLI V3 하네스의 capability 기반 권한 → [Permissions](./permissions.md) |
 
 ::: warning TODO(확인 필요)
-"수정하지 않는다"를 지시문만으로 보장할 수는 없습니다. 파일 쓰기를 실제로 막으려면 CLI 2.x에서는 `allowedTools`/`toolsSettings`, CLI 3.0 / IDE 1.0+에서는 `permissions` 규칙을 함께 설정해야 하는데, 각 필드의 정확한 값 표기는 공식 레퍼런스와 대조하지 못해 예시에서 뺐습니다. 최신 [Configuration reference](https://kiro.dev/docs/custom-agents/configuration-reference/)를 확인하세요. 이전 형식 설정은 `/upgrade-agent`로 변환할 수 있습니다.
+"수정하지 않는다"를 지시문만으로 보장할 수는 없습니다. 파일 쓰기를 실제로 막으려면 CLI V2 하네스에서는 `allowedTools`/`toolsSettings`, CLI V3 하네스 / IDE 1.0+에서는 `permissions` 규칙을 함께 설정해야 하는데, 각 필드의 정확한 값 표기는 공식 레퍼런스와 대조하지 못해 예시에서 뺐습니다. 최신 [Configuration reference](https://kiro.dev/docs/custom-agents/configuration-reference/)를 확인하세요. 이전 형식 설정은 `/upgrade-agent`로 변환할 수 있습니다.
 :::
 
 ## 사용하기

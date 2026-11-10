@@ -5,6 +5,8 @@ sources:
   - https://kiro.dev/docs/getting-started/installation/
   - https://kiro.dev/changelog/cli/
   - https://kiro.dev/docs/cli/v3/
+  - https://kiro.dev/docs/cli/agent-harness/
+  - https://kiro.dev/changelog/cli/3-0/
 ---
 
 # Kiro CLI 설치
@@ -49,7 +51,7 @@ macOS Homebrew 설치 경로(포뮬러/캐스크 이름)는 공식 설치 문서
 kiro-cli --version
 ```
 
-이 가이드는 CLI **2.36.0**(2026-10-29) 기준입니다.
+이 가이드는 CLI **3.1.0**(2026-11-05) 기준입니다.
 
 ## 첫 실행
 
@@ -70,22 +72,21 @@ kiro-cli uninstall
 
 Windows에서는 **설정 → 앱**에서 제거할 수도 있습니다.
 
-## CLI 3.0 (early access) 써 보기
+## V3 하네스가 기본입니다 (3.0.0 이상)
 
-CLI 2.x를 설치하면 3.0 엔진을 함께 시험할 수 있습니다. 기존 2.x 설정은 직접 전환하기 전까지 그대로 유지됩니다.
+CLI **3.0.0(2026-11-03)부터** `kiro-cli`를 실행하면 Kiro IDE·Web과 같은 **V3 하네스**로 시작합니다. 이전 V2 하네스가 필요하면 다음처럼 실행합니다.
 
 ```bash
-kiro-cli --v3
+kiro-cli --v2                          # 이번 실행만 V2
+kiro-cli settings chat.agentEngine v2  # 기본값을 V2로 (전역 설정)
 ```
 
-::: danger 3.0으로 전환하기 전에
-- 3.0은 **Amazon Linux 2에서 동작하지 않습니다.** AL2 환경이라면 2.x를 계속 쓰세요.
-- 3.0 세션은 2.x에서 이어서 열 수 없습니다. 전환 전에 `~/.kiro/sessions/`를 백업하세요.
-- 차이점 전체는 [CLI 2.x와 3.0](/cli/v2-vs-v3)에 정리했습니다.
-:::
-
-::: warning TODO(확인 필요)
-외부 RFC 문서에는 "2026년 10월 말 CLI 3.0이 기본 경험이 된다"는 언급이 있으나, 공식 문서에서는 확인하지 못했습니다. 2.36.0(2026-10-29) changelog 기준으로는 2.x가 현재 라인입니다.
+::: warning 2.x에서 업데이트한 경우
+- **CLI 데스크톱 앱과 인라인 셸 자동완성은 은퇴**했습니다. `autocomplete`, `inline`, `translate`, `theme`, `dashboard` 명령도 없어졌습니다.
+- **Classic(V1) 인터페이스는 실행되지 않습니다.** 별칭이나 바로가기에 `--classic`이 있다면 지우세요.
+- V3에서 만든 세션은 V2에서 열 수 없습니다. V2로 돌아갈 가능성이 있다면 `~/.kiro/sessions/`를 백업해 두세요.
+- glibc가 V3 요구 버전보다 낮은 Linux에서는 자동으로 V2로 열립니다.
+- 차이점 전체는 [CLI V3와 V2 하네스](/cli/v2-vs-v3)에 정리했습니다.
 :::
 
 ## Amazon Q Developer CLI가 이미 설치되어 있다면

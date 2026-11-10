@@ -6,6 +6,8 @@ sources:
   - https://kiro.dev/docs/getting-started/installation/
   - https://kiro.dev/docs/custom-agents/
   - https://kiro.dev/docs/checkpoints/
+  - https://kiro.dev/docs/cli/agent-harness/
+  - https://kiro.dev/docs/workflows/
 ---
 
 # IDE · CLI · Web 차이
@@ -19,10 +21,11 @@ sources:
 | 실행 위치 | 내 PC (데스크톱 앱) | 내 PC·서버의 터미널 | 클라우드 샌드박스 |
 | 기반 | VS Code(Code OSS) | 터미널 UI(TUI) | 브라우저 (`app.kiro.dev`) |
 | 지원 OS | macOS(Intel/Apple Silicon), Windows 10/11(x64/ARM64), Linux(x86_64/ARM64) | macOS, Windows 11(PowerShell), Linux(glibc 2.34+ 또는 musl 빌드) | 브라우저 |
-| Specs | 지원 | 3.0 엔진에서 터미널 스펙 주도 개발 지원 | spec 모드 제공 |
-| Steering · MCP · Hooks | 지원 | 지원 (2.x/3.0 차이 있음, [비교](/cli/v2-vs-v3)) | TODO(확인 필요) |
+| Specs | 지원 | V3 하네스(3.0.0부터 기본)에서 지원 | spec 모드 제공 |
+| Steering · MCP · Hooks | 지원 | 지원 (V3/V2 하네스 차이 있음, [비교](/cli/v2-vs-v3)) | TODO(확인 필요) |
 | Custom agent를 기본 에이전트로 선택 | 가능 | 가능 | 불가 |
-| Checkpoints(되돌리기) | 지원 | 2.x 클래식에서 실험 기능, **3.0에서는 미지원** (`/rewind` 사용) | TODO(확인 필요) |
+| Checkpoints(되돌리기) | 지원 | **V3에서는 미지원** (`/rewind`로 분기 + Git) | TODO(확인 필요) |
+| Workflows | 지원 | `/workflow` 명령 | 지원 |
 | 자동화·CI | — | Headless 모드 (`--no-interactive`) | 백그라운드 세션 |
 | 요금 | 공통 크레딧 | 공통 크레딧 | Pro 이상 유료 플랜 |
 

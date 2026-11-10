@@ -70,7 +70,7 @@ export default defineConfig({
           { text: '대화형 TUI와 기본 명령', link: '/cli/interactive' },
           { text: '세션 관리', link: '/cli/sessions' },
           { text: 'Headless 모드 (스크립트·CI)', link: '/cli/headless' },
-          { text: 'CLI 2.x와 3.0', link: '/cli/v2-vs-v3' }
+          { text: 'CLI V3와 V2 하네스', link: '/cli/v2-vs-v3' }
         ]
       },
       {
@@ -85,6 +85,7 @@ export default defineConfig({
           { text: 'Custom agents', link: '/features/custom-agents' },
           { text: 'Skills', link: '/features/skills' },
           { text: 'Powers', link: '/features/powers' },
+          { text: 'Workflows', link: '/features/workflows' },
           { text: 'ACP (다른 에디터 연동)', link: '/features/acp' }
         ]
       },

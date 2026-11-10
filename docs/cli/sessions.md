@@ -4,6 +4,8 @@ sources:
   - https://kiro.dev/docs/reference/cli-commands/
   - https://kiro.dev/docs/cli/v3/new-features/
   - https://kiro.dev/docs/cli/v3/
+  - https://kiro.dev/docs/cli/agent-harness/
+  - https://kiro.dev/changelog/cli/3-1/
 ---
 
 # 세션 관리
@@ -40,39 +42,39 @@ kiro-cli chat --delete-session <SESSION_ID>
 
 대화형 모드에서 세션을 파일로 내보내고 불러올 수 있습니다.
 
-### CLI 2.x
+### V2 하네스
 
 ```text
 /chat save <경로>.json
 /chat load <경로>.json
 ```
 
-### CLI 3.0
+### V3 하네스 (기본)
 
 ```text
 /chat save <경로>.zip
 /chat load <경로>.zip
 ```
 
-3.0은 세션을 **zip 아카이브**로 저장합니다.
+V3는 세션을 **zip 아카이브**로 저장합니다.
 
 - 직접 만든 스크립트로 저장·불러오려면 `/chat save-via-script`, `/chat load-via-script`를 씁니다.
 - 클라우드 세션에서는 `/chat save`, `/chat load`를 쓸 수 없습니다.
 
-## 2.x ↔ 3.0 세션 호환
+## V2 ↔ V3 세션 호환
 
 | 방향 | 가능 여부 |
 |------|-----------|
-| 2.x 세션을 3.0에서 열기 | 가능 (3.0용 복사본으로 가져옴) |
-| 3.0 세션을 2.x에서 열기 | **불가** |
-| 3.0 사용 후 2.x로 돌아가기 | 3.0에서 만든 세션은 2.x에서 보이지 않음 |
+| V2 세션을 V3에서 열기 | 가능 (V3용 복사본으로 가져옴) |
+| V3 세션을 V2에서 열기 | **불가** |
+| V3 사용 후 V2로 돌아가기 (`--v2`) | V3에서 만든 세션은 V2에서 보이지 않음 |
 
-3.0을 시험하기 전에 `~/.kiro/sessions/`를 백업하세요. → [CLI 2.x와 3.0](./v2-vs-v3.md)
+CLI 3.0.0부터 기본이 V3이므로, V2로 돌아갈 가능성이 있다면 `~/.kiro/sessions/`를 백업해 두세요. → [CLI V3와 V2 하네스](./v2-vs-v3.md)
 
 ## 컨텍스트가 길어졌을 때
 
 | 상황 | 방법 |
 |------|------|
-| 같은 주제를 계속하지만 대화가 길어짐 | `/compact` 로 요약 |
+| 같은 주제를 계속하지만 대화가 길어짐 | `/compact` 로 요약 (압축 전후에 [Hook](/features/hooks) 실행 가능, 3.1.0+) |
 | 주제가 완전히 바뀜 | `/clear` 로 초기화하거나 새 세션 시작 |
-| 이전 지점부터 다른 방향으로 다시 시도 (3.0) | `/rewind` 로 이전 턴에서 분기 |
+| 이전 지점부터 다른 방향으로 다시 시도 (V3) | `/rewind` 로 이전 턴에서 분기 |
