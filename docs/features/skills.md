@@ -9,7 +9,7 @@ sources:
 
 <span class="level">L3</span> Skill은 **재사용 가능한 작업 절차**를 폴더 단위로 묶어 두고, 요청이 맞을 때 에이전트가 불러 쓰게 하는 기능입니다. 항상 포함되는 Steering과 달리 **필요할 때만** 로드됩니다.
 
-## 파일 위치 (CLI 3.0)
+## 파일 위치 (CLI V3 하네스)
 
 ```text
 .kiro/skills/
@@ -38,7 +38,7 @@ description: DB 스키마 변경(테이블·컬럼·인덱스 추가)을 요청�
 
 ::: warning TODO(확인 필요)
 - `SKILL.md` front matter의 필수 필드 목록(`name` 필요 여부 등).
-- CLI 2.x와 IDE에서의 Skills 지원 범위와 경로(외부 블로그에는 CLI 1.24에서 Skills가 추가되었다는 언급이 있음).
+- CLI V2 하네스와 IDE에서의 Skills 지원 범위와 경로(외부 블로그에는 CLI 1.24에서 Skills가 추가되었다는 언급이 있음).
 - 전역(사용자) 스킬 경로.
 :::
 

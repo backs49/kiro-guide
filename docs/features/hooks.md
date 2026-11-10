@@ -7,21 +7,25 @@ sources:
   - https://kiro.dev/docs/ide/editor/multi-root-workspaces/
   - https://kiro.dev/changelog/cli/2-13/
   - https://kiro.dev/changelog/ide/1-2-56/
+  - https://kiro.dev/changelog/cli/3-1/
+  - https://kiro.dev/changelog/ide/1-4-121/
+  - https://kiro.dev/changelog/cli/2-33/
 ---
 
 # Hooks
 
 <span class="level">L3</span> Hook은 **이벤트가 발생했을 때 명령이나 에이전트 지시를 자동으로 실행**하는 기능입니다. 예: Java 파일 저장 시 포매터 실행, 스펙 작업 시작 전 빌드 확인.
 
-## 파일 위치와 형식 (IDE 1.0+ / CLI 3.0)
+## 파일 위치와 형식 (IDE 1.0+ / CLI V3 하네스)
 
 | 범위 | 경로 |
 |------|------|
 | 워크스페이스 | `.kiro/hooks/*.json` |
-| 전역 (CLI 3.0) | `~/.kiro/hooks/*.json` — 모든 워크스페이스에서 동작 |
+| 전역 | `~/.kiro/hooks/*.json` — 모든 워크스페이스에서 동작 (CLI V3) |
 
 - Hook은 **독립된 JSON 파일**로 저장됩니다. 현재 스키마 버전은 **`v1`** 입니다.
 - IDE에서는 Kiro 패널의 **Agent Hooks** 영역에서 만들고 관리할 수 있습니다.
+- CLI V3에서는 **워크스페이스를 신뢰하기 전까지** 그 폴더의 Hook을 로드하지 않습니다. → [대화형 TUI](/cli/interactive)
 
 ### 필드 구조
 
@@ -87,6 +91,21 @@ sources:
 |--------|------|------|
 | `PostFileSave` | 파일이 저장된 뒤 (IDE 문서: 에이전트가 파일을 저장·수정했을 때) | `matcher`로 파일 경로 필터 |
 | `PreTaskExec` | 스펙 작업이 시작되기 전 | **작업을 막을 수 있음**: `command` 동작이 종료 코드 `2`로 끝나면 차단 |
+| `PreCompact` | 대화를 압축(수동 `/compact` 또는 자동)하기 전 | **압축을 거부할 수 있음**. CLI V3 3.1.0+ |
+| `PostCompact` | 대화를 압축한 뒤 | 압축 요약을 전달받음. CLI V3 3.1.0+ |
+
+### 압축(Compaction) Hook
+
+대화가 길어져 Kiro가 대화를 요약(압축)하기 전후에 Hook을 실행할 수 있습니다. 압축으로 사라지면 안 되는 정보(예: 진행 중인 작업 메모)를 저장하거나, 중요한 작업 도중 압축을 막을 때 씁니다.
+
+| | CLI | IDE |
+|---|-----|-----|
+| 지원 버전 | 3.1.0 (2026-11-05) | 1.4.121 (2026-11-05) |
+| 이름 | `PreCompact`, `PostCompact` 트리거 | UI의 Pre Compaction / Post Compaction 트리거 |
+| 압축 막기 | `PreCompact`에서 거부 가능 | Pre Compaction Hook이 종료 코드 `2`로 끝나면 취소 |
+
+- 오래된 CLI는 모르는 트리거의 Hook을 **조용히 건너뜁니다.** 팀원 모두 3.1.0 이상인지 확인하세요.
+- IDE에서 이 트리거를 JSON 파일에 쓸 때의 이름은 공식 문서에서 확인하지 못했습니다. IDE에서는 Agent Hooks 화면에서 만드세요.
 
 ::: warning TODO(확인 필요)
 전체 트리거 목록(파일 생성·삭제, 프롬프트 제출, 에이전트 종료, 도구 실행 전후 등)과 각 이름은 [Hooks 문서](https://kiro.dev/docs/hooks/)에서 확인 후 추가할 예정입니다. IDE 1.2.56 변경 로그에 "유연한 Hook 매칭", CLI 2.28.0에 "카테고리 기반 Hook 매칭"이 추가되었다는 언급이 있습니다.
@@ -101,9 +120,9 @@ sources:
 
 CLI에서는 `kiro-cli agent migrate`로 기존 Hook을 자동 변환할 수 있습니다. 인터넷에 있는 `when`/`then` 형식 예제는 **이전 형식**이므로 그대로 쓰지 마세요.
 
-## 2.x와 3.0의 차이
+## V2와 V3 하네스의 차이
 
-| | CLI 2.x | CLI 3.0 / IDE 1.0+ |
+| | CLI V2 하네스 | CLI V3 하네스 (3.0.0+ 기본) / IDE 1.0+ |
 |---|---------|--------------------|
 | 저장 위치 | 에이전트 설정 안에 포함 | `.kiro/hooks/*.json` 독립 파일 |
 | 전역 Hook | — | `~/.kiro/hooks/` |
