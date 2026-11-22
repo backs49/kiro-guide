@@ -16,7 +16,7 @@ sources:
 
 ::: warning 읽기 전에
 - 두 도구는 비슷해 보여도 **동작 방식이 다른 부분**이 있습니다. "대응"은 역할이 비슷하다는 뜻이지 같은 기능이라는 뜻이 아닙니다.
-- Kiro 쪽은 이 가이드의 기준 버전(IDE 1.4.121 / CLI 3.1.0, V3 하네스)을 따릅니다.
+- Kiro 쪽은 이 가이드의 기준 버전(IDE 1.5.11 / CLI 3.5.0, V3 하네스)을 따릅니다.
 - Claude Code 쪽은 [Claude Code 공식 문서](https://code.claude.com/docs/)의 개념 수준으로만 적었습니다. Claude Code도 업데이트가 잦으므로 세부 동작은 해당 문서를 확인하세요.
 :::
 
@@ -58,9 +58,9 @@ sources:
 | | Claude Code | Kiro |
 |---|-------------|------|
 | 정의 위치 | `settings.json`의 hooks 항목 | `.kiro/hooks/*.json` 독립 파일 (v1 스키마) |
-| 이벤트 | 도구 사용 전후, 프롬프트 제출, 세션 시작·종료 등 | `PostFileSave`, `PreTaskExec`(스펙 작업 전), `PreCompact`/`PostCompact`(대화 압축 전후) 등. 전체 목록 TODO(확인 필요) |
+| 이벤트 | 도구 사용 전후, 프롬프트 제출, 세션 시작·종료 등 | `PreToolUse`, `PermissionRequest`(승인 요청 직전, 3.4.0+), `PostFileSave`, `PreTaskExec`(스펙 작업 전), `PreCompact`/`PostCompact`(대화 압축 전후), `SessionStart`/`SessionEnd` 등 → [Hooks](/features/hooks) |
 | 동작 | 셸 명령 | `command`(셸) 또는 **`agent`(에이전트에 지시문 전달)** |
-| 차단 | 종료 코드로 차단 | `PreTaskExec`에서 종료 코드 `2`로 차단 |
+| 차단 | 종료 코드로 차단 | `PreToolUse`·`PreTaskExec`에서 종료 코드 `2`로 차단. `PreToolUse`는 입력 교체(`updatedInput`)도 가능 |
 
 Kiro Hook은 **에이전트 지시(`agent`) 타입**이 있어 "저장하면 리뷰해 줘" 같은 자연어 자동화를 바로 만들 수 있다는 점이 다릅니다.
 

@@ -9,6 +9,8 @@ sources:
   - https://kiro.dev/docs/enterprise/governance/permissions/
   - https://kiro.dev/docs/cli/v3/migration-guide/
   - https://kiro.dev/changelog/cli/2-36/
+  - https://kiro.dev/changelog/ide/1-4-154/
+  - https://kiro.dev/changelog/cli/3-4/
 ---
 
 # Permissions
@@ -72,12 +74,21 @@ rules:
 - capability별 **기본 동작(허용/확인/거부)** 표.
 :::
 
-## Approve for me
+## Approve for me {#approve-for-me}
 
-V3 대화형 세션에서 **Approve for me** 정책을 켜면 일상적인 동작은 Kiro가 대신 승인합니다(CLI 2.36.0에서 추가, 3.0에도 포함).
+**Approve for me**를 켜면 규칙이 정하지 않은 동작을 모델이 판단해, 안전하면 승인하고 위험하면 막고 애매하면 사용자에게 묻습니다. 대신 승인된 호출은 도구 카드에 "Approved for you"로 표시됩니다.
 
-- `/permissions` → **Policies**에서 켜며, 워크스페이스별로 저장됩니다.
-- 이미 있는 `deny`·`ask`·`allow` 규칙이 먼저 적용됩니다. 위험한 명령은 `deny` 규칙으로 막아 두세요.
+| 클라이언트 | 지원 | 켜는 방법 |
+|------------|------|-----------|
+| IDE | 1.4.154+ (2026-11-10) | 채팅 입력창의 권한 모드 메뉴에서 **Approve for me**. 기본값은 What's new의 "Use Approve for me by default" 또는 명령 팔레트 → [권한 모드](/ide/models-and-modes) |
+| CLI V3 대화형 | 2.36.0+ | `/permissions` → **Policies**. 워크스페이스별로 저장 |
+
+- 내부적으로는 `evaluate` 효과로 동작하므로, 이미 있는 `deny`·`ask`·`allow` 규칙이 먼저 적용됩니다. 위험한 명령은 `deny` 규칙으로 막아 두세요.
+- `permissions.yaml`에서는 `policies:` 아래의 `approve-for-me` 프리셋으로 나타납니다.
+
+## Hook으로 승인 요청에 답하기
+
+CLI 3.4.0 / IDE 1.4.236부터 `PreToolUse` Hook이 도구 입력을 바꾸거나 허용·확인·거부를 정할 수 있고, 새 `PermissionRequest` Hook이 승인 요청 직전에 `allow`/`deny`로 답할 수 있습니다. 어느 Hook이든 `deny`가 `allow`를 이기며, Hook의 답은 **그 호출 한 번에만** 적용되고 규칙으로 저장되지 않습니다. 정책의 `deny`나 보호 경로·조직 확인은 Hook으로 넘을 수 없습니다. → [Hooks](/features/hooks#tool-hooks)
 
 ## Capability (권한 대상)
 

@@ -6,6 +6,9 @@ sources:
   - https://kiro.dev/docs/mcp/examples/
   - https://kiro.dev/docs/cli/mcp/
   - https://kiro.dev/docs/custom-agents/configuration-reference/
+  - https://kiro.dev/changelog/cli/3-2/
+  - https://kiro.dev/changelog/cli/3-5/
+  - https://kiro.dev/changelog/ide/1-4-236/
 ---
 
 # MCP (Model Context Protocol)
@@ -65,6 +68,32 @@ kiro-cli mcp add   # 이름, 범위(scope), 명령, 인자, 환경 변수를 지
 
 ::: warning TODO(확인 필요)
 `kiro-cli mcp add`의 정확한 플래그 이름은 [CLI MCP 문서](https://kiro.dev/docs/cli/mcp/)에서 확인하세요.
+:::
+
+## 원격(HTTP) MCP 서버 로그인
+
+OAuth가 필요한 HTTP MCP 서버는 다음 순서로 로그인 방식을 정합니다.
+
+| 상황 | 동작 |
+|------|------|
+| 설정에 `clientId` 또는 `clientMetadataUrl`이 있음 | 그 값을 우선 사용 |
+| 서버가 동적 클라이언트 등록(DCR)을 지원 | 기존처럼 DCR 사용 |
+| DCR은 없고 **Client ID Metadata Documents(CIMD)** 를 지원 | CLI 3.2.0+에서 Kiro가 호스팅하는 클라이언트 메타데이터로 로그인. 별도 `oauth` 블록이 필요 없음 |
+| 서버 운영자가 Kiro용 client ID를 발급함 | `kiro-cli mcp add`에 `--oauth-client-id <client-id>` 지정 (조직 레지스트리가 그 서버의 OAuth를 관리하는 경우는 제외) |
+
+### 조직 로그인 (Organization sign-in)
+
+회사가 허용한 HTTP MCP 서버들은 **조직의 ID 공급자(IdP)로 한 번만 로그인**해 함께 쓸 수 있습니다. 관리자에게 IdP의 issuer와 client ID를 받아 설정합니다.
+
+| | CLI 3.5.0+ (V3) | IDE 1.4.236+ |
+|---|---|---|
+| 설정 | `kiro-cli mcp idp setup`에 issuer와 client ID 입력 | 관리자가 안내한 공급자를 사용자 MCP 설정에 추가 |
+| 로그인 | `/mcp`를 열고 `Enter` | MCP Servers 화면의 **Organization sign-in** 행에서 **Sign in** |
+
+조직 로그인으로 설정된 서버는 로그인하기 전까지 **연결되지 않은 상태**로 남습니다.
+
+::: warning TODO(확인 필요)
+IDE 사용자 MCP 설정에 IdP를 추가하는 정확한 키 이름은 [MCP 설정 문서](https://kiro.dev/docs/mcp/configuration/#organization-sign-in)에서 확인하세요.
 :::
 
 ## Custom agent에서 MCP 도구 지정

@@ -7,6 +7,9 @@ sources:
   - https://kiro.dev/changelog/ide/1-4-86/
   - https://kiro.dev/changelog/ide/1-4-121/
   - https://kiro.dev/changelog/cli/3-1/
+  - https://kiro.dev/changelog/ide/1-4-178/
+  - https://kiro.dev/changelog/ide/1-4-215/
+  - https://kiro.dev/changelog/cli/3-2/
 ---
 
 # Workflows
@@ -40,6 +43,8 @@ sources:
 | 1.4.26 | 2026-10-22 | 채팅에서 Kiro가 Workflow를 시작하는 빈도 조절 |
 | 1.4.86 | 2026-11-02 | Workflow 실행을 **별도 탭**으로 열어 단계 트리와 선택한 단계의 대화 기록을 나란히 표시 |
 | 1.4.121 | 2026-11-05 | Workflow Runs 화면에 **검색** 추가, 실행 카드 간소화 |
+| 1.4.178 | 2026-11-12 | Workflow 탭에서 실행을 **단계별로 따라가기** |
+| 1.4.215 | 2026-11-16 | Workflow 실행에 **사용한 크레딧** 표시 |
 
 ## CLI에서
 
@@ -51,6 +56,8 @@ sources:
 
 - CLI 2.33.1 이상에서는 Workflow 기능을 켜도 저절로 실행되지 않고, **요청할 때만** 실행됩니다.
 - 3.1.0부터 Workflow 단계 행에 사용한 크레딧이 표시됩니다.
+- 3.2.0부터 반복(loop)을 **한 번 더 실행**하거나, 반복 횟수를 다 쓴 loop를 마무리할 수 있습니다. autonomous 모드에서 Workflow를 쓸 수 없으면 그 사실을 알려 줍니다.
+- 3.3.0부터 에이전트를 다시 시작한 뒤 멈춰 있던 Workflow 세션을 다시 불러옵니다.
 - V3 하네스에서는 워크스페이스를 신뢰하기 전까지 그 폴더의 Workflow 파일을 로드하지 않습니다.
 
 ## 비용

@@ -3,6 +3,8 @@ sources:
   - https://kiro.dev/docs/skills/
   - https://kiro.dev/docs/cli/skills
   - https://kiro.dev/docs/cli/v3/new-features/
+  - https://kiro.dev/changelog/ide/1-4-178/
+  - https://kiro.dev/changelog/ide/1-4-236/
 ---
 
 # Skills
@@ -19,6 +21,8 @@ sources:
 
 - 워크스페이스의 모든 에이전트가 자동으로 발견합니다.
 - `SKILL.md`에는 **front matter가 있어야** 하며, `description` 필드가 Kiro가 이 스킬을 언제 활성화할지 판단하는 기준입니다.
+- IDE 1.4.178부터 대화가 압축된 뒤에도 요청했던 Skill과 Steering 파일을 다시 불러옵니다.
+- IDE 1.4.236부터 GitHub뿐 아니라 공개 GitLab URL로도 Skill을 가져올 수 있습니다(사내 GitLab은 `kiroAgent.powers.trustedGitLabHosts`에 호스트 추가). → [Powers](./powers.md)
 
 ## 예: Flyway 마이그레이션 작성 스킬
 

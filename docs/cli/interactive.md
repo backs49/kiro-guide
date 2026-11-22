@@ -10,6 +10,10 @@ sources:
   - https://kiro.dev/changelog/cli/2-33/
   - https://kiro.dev/changelog/cli/2-36/
   - https://kiro.dev/changelog/cli/3-1/
+  - https://kiro.dev/changelog/cli/3-2/
+  - https://kiro.dev/changelog/cli/3-2-1/
+  - https://kiro.dev/changelog/cli/3-3/
+  - https://kiro.dev/docs/compaction/
 ---
 
 # 대화형 TUI와 기본 명령
@@ -41,7 +45,8 @@ V3 대화형 세션은 처음 여는 폴더를 **신뢰할지** 묻습니다. �
 | `/help` | | Help Agent로 전환해 Kiro CLI 사용법을 질문. `/help --legacy`는 기존 도움말 표시 |
 | `/quit` | `/exit`, `/q` | 종료 |
 | `/clear` | `/c` | 현재 세션의 대화 기록을 지우고 컨텍스트를 초기화 (같은 세션 유지) |
-| `/compact` | | 대화를 요약해 컨텍스트 공간 확보 |
+| `/compact` | | 대화를 요약해 컨텍스트 공간 확보. 자동 압축 시작 시점은 `/settings` → Compaction에서 설정 (3.3.0+) → [세션 관리](./sessions.md#compaction) |
+| `/settings` | | CLI 설정 화면. 압축(Compaction), 도구 호출 출력 상세도(3.2.1+), 상태 표시줄 항목(`/settings display`) 등 |
 | `/context` | `/ctx` | 컨텍스트 파일 관리와 컨텍스트 창 사용량 확인. `show`, `add`, `remove`, `clear` |
 | `/model` | | 모델 변경 또는 기본 모델 설정 (기본값 Auto) |
 | `/agent` | | 에이전트 관리. `list`, `swap`, `set-default`, `create` 등 → [Custom agents](/features/custom-agents) |
@@ -51,6 +56,9 @@ V3 대화형 세션은 처음 여는 폴더를 **신뢰할지** 묻습니다. �
 | `/permissions` | | 권한 규칙과 정책 확인·변경 (Approve for me 포함) → [Permissions](/features/permissions) |
 | `/workflow` | | Workflow 실행·목록·기록 → [Workflows](/features/workflows) |
 | `/chat` | | 세션 저장·불러오기 → [세션 관리](./sessions.md) |
+| `/copy` | | 응답을 클립보드로 복사. `/copy 2`는 마지막 직전 응답, `/copy last 3`은 최근 3개 메시지를 오래된 순으로 (3.3.0+) |
+| `/transcript` | | 대화 전체 기록 |
+| `/diagram` | | 가장 최근의 넓은 Mermaid 다이어그램을 전체 화면으로 보기 (3.2.0+, 단축키 `Ctrl+]`) |
 
 ::: tip `/context` 변경은 임시입니다
 `/context add`로 추가한 파일은 **현재 세션에만** 적용됩니다. 매번 필요한 규칙이라면 [Steering](/features/steering)이나 Custom agent의 `resources`로 등록하세요.
@@ -79,6 +87,10 @@ V3에서 `/tools` 명령과 `--trust-*` 플래그는 **세션 범위의 덮어�
 ### Approve for me
 
 V3 대화형 세션에서는 **Approve for me** 정책을 켜면 일상적인 동작은 Kiro가 대신 승인합니다. `/permissions` → **Policies**에서 설정하며 워크스페이스별로 저장됩니다. 이미 있는 deny·ask·allow 규칙이 먼저 적용됩니다.
+
+## 넓은 Mermaid 다이어그램 보기
+
+CLI 3.2.0부터 터미널 폭보다 넓은 Mermaid 다이어그램은 원본 코드와 안내가 표시되고, `Ctrl+]` 또는 `/diagram`으로 전체 화면 뷰어를 엽니다. 방향키나 마우스 휠로 이동하고, `Tab`으로 이전 다이어그램, `Esc`로 작성 중이던 입력을 그대로 둔 채 채팅으로 돌아갑니다. 단축키는 `chat.keybindings.viewDiagram`으로 바꿀 수 있습니다.
 
 ## Plan 모드
 

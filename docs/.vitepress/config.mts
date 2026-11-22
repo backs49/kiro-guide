@@ -60,7 +60,8 @@ export default defineConfig({
         items: [
           { text: '채팅 인터페이스', link: '/ide/chat' },
           { text: '컨텍스트 참조 (#)', link: '/ide/context' },
-          { text: '모델 · 에이전트 동작', link: '/ide/models-and-modes' }
+          { text: '모델 · 에이전트 동작', link: '/ide/models-and-modes' },
+          { text: '원격 개발 (SSH · Dev Containers)', link: '/ide/remote-development' }
         ]
       },
       {
