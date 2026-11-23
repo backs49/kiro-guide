@@ -4,6 +4,8 @@ sources:
   - https://kiro.dev/docs/reference/cli-commands/
   - https://kiro.dev/docs/cli/authentication
   - https://kiro.dev/docs/cli/headless/
+  - https://kiro.dev/changelog/cli/3-5/
+  - https://kiro.dev/docs/enterprise/governance/sign-in/
 ---
 
 # 로그인(인증)
@@ -43,10 +45,16 @@ IAM Identity Center 로그인은 조직의 시작 URL(Identity Provider URL)과 
 IAM Identity Center 로그인 시 시작 URL·리전을 넘기는 정확한 플래그 이름은 [CLI 명령 레퍼런스](https://kiro.dev/docs/reference/cli-commands/)에서 확인하세요.
 :::
 
+### 회사 전용 로그인 포털
+
+CLI 3.5.0부터 설정 `auth.portalUrl`을 지정하면 `kiro-cli login`이 그 포털을 엽니다. 관리자는 `AuthPortalUrl` 정책이나 `managed-settings.json`의 `auth_portal_url`로 일괄 지정할 수 있습니다. 값을 쓸 수 없으면 기본 포털로 돌아갑니다.
+
 ### 원격 서버(SSH)에서 로그인할 때
 
 - **Builder ID / IAM Identity Center**는 디바이스 코드 방식입니다. 터미널에 표시된 URL과 코드를 내 PC 브라우저에서 입력하면 됩니다.
 - **소셜 로그인(GitHub/Google)** 은 PKCE 방식이라 로컬 콜백 포트가 필요합니다. SSH 포트 포워딩을 설정하거나, 디바이스 코드 방식 로그인을 고르세요.
+- CLI 3.2.1에서 그래픽 세션이 없는 Linux 호스트의 로그인 문제가 고쳐졌습니다. 로그인이 안 되면 먼저 CLI를 최신으로 올리세요.
+- IDE의 Remote SSH 창은 로컬 창과 **로그인이 따로**입니다. → [원격 개발](/ide/remote-development)
 
 ## 로그인 상태 확인과 로그아웃
 

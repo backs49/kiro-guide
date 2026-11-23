@@ -5,6 +5,7 @@ sources:
   - https://kiro.dev/docs/powers/create
   - https://kiro.dev/blog/introducing-powers/
   - https://github.com/kirodotdev/powers
+  - https://kiro.dev/changelog/ide/1-4-236/
 ---
 
 # Powers
@@ -17,7 +18,9 @@ sources:
 |------|------|
 | 공식 Powers 목록 | [kiro.dev/powers](https://kiro.dev/powers)에서 **Add to Kiro** 버튼 |
 | IDE Powers 패널 | 목록에서 검색·설치 |
-| 사용자 지정 Power | Powers 패널의 **Add Custom Power**에서 GitHub 저장소 또는 로컬 폴더 지정 |
+| 사용자 지정 Power | Powers 패널의 **Add Custom Power**에서 GitHub·GitLab 저장소 또는 로컬 폴더 지정 |
+
+IDE 1.4.236(2026-11-18)부터 공개 **GitLab** URL로도 Power를 설치하고 Skill을 가져올 수 있습니다. 사내(self-hosted) GitLab은 먼저 설정 `kiroAgent.powers.trustedGitLabHosts`에 호스트를 추가해야 합니다.
 
 ::: danger 설치 전에 확인
 공식 문서도 Power를 설치하기 전에 **소스와 요청하는 접근 권한을 검토**하라고 권장합니다. 특히 MCP 서버를 포함한 Power는 내 PC에서 프로그램을 실행합니다.

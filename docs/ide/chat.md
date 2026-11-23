@@ -4,6 +4,8 @@ sources:
   - https://kiro.dev/docs/ide/chat/slash-commands/
   - https://kiro.dev/docs/checkpoints/
   - https://kiro.dev/changelog/ide/
+  - https://kiro.dev/changelog/ide/1-4-215/
+  - https://kiro.dev/changelog/ide/1-4-236/
 ---
 
 # 채팅 인터페이스
@@ -19,7 +21,7 @@ sources:
 | 입력창 | 요청 입력. `#`으로 컨텍스트 참조, `/`로 슬래시 명령 호출 |
 | 모델 선택기 | 사용할 모델 또는 Auto 선택 → [모델 · 에이전트 동작](./models-and-modes.md) |
 | 에이전트 선택기 | 기본 에이전트 또는 [Custom agent](/features/custom-agents) 선택 (에이전트가 응답 대기 중일 때만 전환 가능) |
-| 모드 전환 | Autopilot / Supervised |
+| 권한 모드 메뉴 | Supervised / Accept file changes(이전 Autopilot) / Approve for me (IDE 1.4.154+) → [권한 모드](./models-and-modes.md#permission-modes) |
 
 ## 일반 대화(Vibe)와 스펙
 
@@ -36,6 +38,12 @@ sources:
 
 - `#file`, `#folder` 등 컨텍스트 참조로 붙입니다. → [컨텍스트 참조](./context.md)
 - 탐색기에서 파일을 채팅 창으로 끌어다 놓을 수 있습니다. IDE 1.4.62부터 Shift 키를 누르지 않고도 끌어다 놓을 수 있습니다.
+
+## 대화 분기(Fork)와 동시 실행
+
+- IDE 1.4.215부터 채팅의 **어느 턴에서든 대화를 분기(fork)** 해, 원래 대화를 남겨 둔 채 같은 지점에서 다른 요청을 시도할 수 있습니다.
+- Custom agent나 Plan을 쓰는 채팅도 다른 채팅과 동시에 실행됩니다(1.4.215+).
+- IDE 1.4.236부터 채팅을 Side Bar와 Editor Area 사이로 옮길 수 있습니다.
 
 ## 변경 검토와 되돌리기 (Checkpoints)
 

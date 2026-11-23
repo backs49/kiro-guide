@@ -5,6 +5,7 @@ sources:
   - https://kiro.dev/docs/cli/v3/new-features/
   - https://kiro.dev/docs/ide/chat/slash-commands/
   - https://kiro.dev/changelog/ide/1-4-86/
+  - https://kiro.dev/changelog/ide/1-4-178/
 ---
 
 # Steering
@@ -94,6 +95,7 @@ inclusion: manual
 
 - IDE 1.4.86(2026-11-02)부터 Kiro가 **제대로 쓰지 못한 Steering 파일에 경고**를 표시합니다. 경고가 보이면 front matter 형식과 패턴을 확인하세요.
 - CLI V3에서는 워크스페이스를 신뢰하기 전까지 그 폴더의 Steering을 로드하지 않습니다.
+- IDE 1.4.178부터 대화가 압축(compaction)된 뒤에도 요청했던 Steering·Skill 파일을 다시 불러옵니다.
 
 ## 좋은 Steering 작성 요령
 

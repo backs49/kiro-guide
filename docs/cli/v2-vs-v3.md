@@ -56,7 +56,7 @@ kiro-cli settings chat.agentEngine v2  # 기본값을 V2로 바꾸기 (v3 / v2 /
 | 권한 모델 | 에이전트 설정의 `toolsSettings`, `allowedTools` | capability 기반 규칙 (`permissions.yaml`, 에이전트 `permissions`) → [Permissions](/features/permissions) |
 | Approve for me | — | 일상적인 동작을 대신 승인 (`/permissions` → Policies, 워크스페이스별 저장) |
 | 워크스페이스 신뢰 | — | 폴더를 신뢰하기 전에는 그 폴더의 Hook·에이전트·MCP·Steering·Workflow를 로드하지 않음 |
-| Hooks | 에이전트 설정에 포함 | **독립 파일** `.kiro/hooks/*.json` (v1 스키마), 전역 `~/.kiro/hooks/`, 압축 Hook(`PreCompact`/`PostCompact`) |
+| Hooks | 에이전트 설정에 포함 | **독립 파일** `.kiro/hooks/*.json` (v1 스키마), 전역 `~/.kiro/hooks/`, 압축 Hook(`PreCompact`/`PostCompact`), 도구 입력 교체(`updatedInput`)·`PermissionRequest` Hook(3.4.0+) |
 | Steering 포함 모드 | `always`만 자동 로딩 | always, fileMatch, manual, auto 모두 지원 |
 | Skills | TODO(확인 필요) | `.kiro/skills/<이름>/SKILL.md` |
 | Plan 모드 | TODO(확인 필요) | `Shift+Tab` |
@@ -69,6 +69,10 @@ kiro-cli settings chat.agentEngine v2  # 기본값을 V2로 바꾸기 (v3 / v2 /
 - `/checkpoint`(실험 기능, `chat.enableCheckpoint`)는 공식 문서에 "classic 전용"으로 나와 있었습니다. 3.0.0에서 Classic(V1)이 은퇴했으므로 V2 하네스에서 계속 쓸 수 있는지 확인하지 못했습니다.
 - Amazon Linux 2에서 3.x의 동작: 이전 문서는 "V3는 AL2에서 동작하지 않는다"고 했습니다. 3.0.0 이후 AL2가 위의 "glibc가 낮은 Linux"처럼 V2로 자동 전환되는지는 확인하지 못했습니다.
 - V2 하네스의 Skills·Plan 모드 지원 범위.
+:::
+
+::: info V2 에이전트를 V3로 옮길 때 (3.3.0+)
+CLI 3.3.0부터 V2 에이전트를 V3로 업그레이드해도 **allow 규칙이 넓어지지 않습니다.**
 :::
 
 ## V2에서 V3로 옮길 때 순서

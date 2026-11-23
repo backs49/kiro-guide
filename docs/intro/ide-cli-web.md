@@ -8,6 +8,8 @@ sources:
   - https://kiro.dev/docs/checkpoints/
   - https://kiro.dev/docs/cli/agent-harness/
   - https://kiro.dev/docs/workflows/
+  - https://kiro.dev/changelog/ide/1-5/
+  - https://kiro.dev/changelog/cli/3-5/
 ---
 
 # IDE · CLI · Web 차이
@@ -18,7 +20,7 @@ sources:
 
 | 항목 | Kiro IDE | Kiro CLI | Kiro Web |
 |------|----------|----------|----------|
-| 실행 위치 | 내 PC (데스크톱 앱) | 내 PC·서버의 터미널 | 클라우드 샌드박스 |
+| 실행 위치 | 내 PC (데스크톱 앱). 1.5.11부터 SSH 호스트·Dev Container에 원격 연결 가능 | 내 PC·서버의 터미널 | 클라우드 샌드박스 |
 | 기반 | VS Code(Code OSS) | 터미널 UI(TUI) | 브라우저 (`app.kiro.dev`) |
 | 지원 OS | macOS(Intel/Apple Silicon), Windows 10/11(x64/ARM64), Linux(x86_64/ARM64) | macOS, Windows 11(PowerShell), Linux(glibc 2.34+ 또는 musl 빌드) | 브라우저 |
 | Specs | 지원 | V3 하네스(3.0.0부터 기본)에서 지원 | spec 모드 제공 |
@@ -33,10 +35,14 @@ sources:
 지원 OS는 공식 [설치 문서](https://kiro.dev/docs/getting-started/installation/) 기준입니다. 일부 외부 블로그는 Windows ARM 미지원이라고 적고 있지만, 공식 문서는 ARM64를 지원 목록에 올려 두었습니다.
 :::
 
+::: info Kiro for VS Code (2026-11-19)
+기존 VS Code(1.145 이상)에 설치하는 확장 **Kiro for VS Code** 1.5.0이 나왔습니다. 모든 Kiro 플랜에 포함되며 요금·청구는 바뀌지 않습니다. 이 가이드는 Kiro IDE를 기준으로 하며, 확장에서 지원하는 기능 범위는 [변경 로그](https://kiro.dev/changelog/)에서 확인하세요.
+:::
+
 ## 어떤 걸 먼저 쓸까?
 
 - **IntelliJ/Eclipse로 Spring Boot를 개발해 왔다면** → 먼저 **Kiro IDE**로 시작하세요. 스펙 문서와 코드 변경(diff)을 화면에서 같이 보는 편이 익히기 쉽습니다. IntelliJ를 계속 쓰고 싶다면 [ACP 연동](/features/acp)으로 Kiro CLI를 IntelliJ AI Assistant 안에서 쓸 수 있습니다.
-- **원격 서버나 컨테이너에서 작업한다면** → **Kiro CLI**가 맞습니다.
+- **원격 서버나 컨테이너에서 작업한다면** → 화면에서 보며 작업하려면 IDE 1.5.11+의 **Remote SSH·Dev Containers**를, 터미널만 쓸 수 있거나 스크립트로 돌리려면 **Kiro CLI**를 씁니다. → [원격 개발](/ide/remote-development)
 - **CI 파이프라인에서 리뷰·문서 생성 등을 자동화하려면** → **Kiro CLI Headless 모드**를 씁니다. → [Headless 모드](/cli/headless)
 - **오래 걸리는 작업을 맡겨 두고 다른 일을 하려면** → **Kiro Web**의 클라우드 세션을 고려합니다.
 
@@ -48,6 +54,9 @@ Kiro Web은 브라우저에서 대화로 작업을 지시하면, 관리형 클�
 - default, spec, autonomous 모드를 제공합니다.
 - GitHub와 GitLab 저장소를 대상으로 하며, 한 세션에서 여러 저장소에 걸친 변경을 조정할 수 있습니다.
 - Pro, Pro+, Pro Max, Power 플랜에서 사용할 수 있습니다.
+- IDE 1.5.11부터 Sessions 화면의 **Open in IDE**로 클라우드 세션을 IDE 창에서 열 수 있습니다.
+- Enterprise 플랜에서는 클라우드 세션을 **회사 VPC에 연결**할 수 있습니다(Preview, IAM Identity Center 프로필, `us-east-1`). 관리자가 Kiro 콘솔에서 연결을 만들고 프로필 기본값으로 지정합니다. CLI 3.5.0부터 VPC에 연결된 세션은 입력창 아래 행과 `/session-id`에 연결 이름·VPC ID·리전이 표시됩니다.
+- 2026-11-13부터 Kiro Web을 유럽(프랑크푸르트, `eu-central-1`) 리전에서도 쓸 수 있습니다.
 
 ::: warning TODO(확인 필요)
 Kiro Web의 정식 출시(GA) 여부: 공식 블로그는 Kiro Web과 클라우드 세션이 GA라고 설명하지만, 일부 changelog 항목은 여전히 Preview로 표기합니다. 사내 도입 전에 [Kiro Web 문서](https://kiro.dev/docs/web/)에서 현재 상태를 확인하세요.

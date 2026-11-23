@@ -2,6 +2,7 @@
 sources:
   - https://kiro.dev/changelog/ide/
   - https://kiro.dev/changelog/cli/
+  - https://kiro.dev/changelog/
 ---
 
 # 부록: 가이드 변경 이력
@@ -12,24 +13,40 @@ sources:
 
 | 날짜 | 버전 | 내용 |
 |------|------|------|
+| 2026-11-22 | 0.3.0 | 2026-11-10 이후 변경 반영: IDE 권한 모드 메뉴(Supervised / Accept file changes / Approve for me), `PreToolUse` 입력 교체·`PermissionRequest` Hook, MCP 조직 로그인·CIMD, CLI `/copy`·`/diagram`·자동 압축 기준값, IDE 원격 개발(SSH·Dev Containers·클라우드 세션) 페이지 추가, GitLab 설치, 대화 분기, 로그인 포털, VPC 클라우드 세션, Kiro for VS Code |
 | 2026-11-10 | 0.2.0 | 2026-11-02 이후 변경 반영: CLI 3.0.0(V3 하네스 기본, Classic·데스크톱 앱·자동완성 은퇴), CLI 3.1.0(압축 Hook, 세션 크레딧 표시), 워크스페이스 신뢰, Approve for me, `permissions.yaml`, IDE 1.4.86·1.4.121, Workflows 페이지 추가, 팀 플랜 정보 |
 | 2026-11-02 | 0.1.0 | 초안 작성. 소개, 시작하기, 요금, IDE, CLI, 핵심 기능, 실무 레시피, Claude Code 대응표, FAQ, 참고 링크, Q Developer 이전 부록 |
 
-## 작성 기준 Kiro 버전 (2026-11-10 확인)
+## 작성 기준 Kiro 버전 (2026-11-22 확인)
 
 ::: info 확인 방법
 초안 작성 환경에서는 kiro.dev에 직접 접속할 수 없어, **공식 문서·변경 로그 페이지의 내용을 웹 검색 결과로 확인**했습니다. 각 페이지 하단의 "확인 날짜"도 이 방식의 확인을 뜻합니다. `TODO(확인 필요)` 항목과 버전 정보는 실제 공식 문서에서 다시 확인하세요. 2026-11-10 갱신도 같은 방식으로, 2026-11-02 이후 변경 로그를 검색해 가이드에 영향이 있는 부분을 반영했습니다.
+
+2026-11-22 갱신은 kiro.dev 변경 로그와 일부 문서 페이지(Hook types, Permissions, Remote SSH, Dev Containers, Compaction)를 **직접 가져와** 확인했습니다. 다만 변경 로그 각 릴리스의 Improvements·Fixes 항목 목록은 내용 없이 제목만 가져와져, 릴리스 요약문에 나온 변경만 반영했습니다.
 :::
 
 | 제품 | 버전 | 릴리스 날짜 | 비고 |
 |------|------|-------------|------|
-| Kiro IDE | 1.4.121 | 2026-11-05 | 압축 Hook, Workflow 실행 검색, 서브에이전트 메모리 |
-| Kiro CLI | 3.1.0 | 2026-11-05 | V3 하네스 기본 (3.0.0부터). V2는 `kiro-cli --v2` |
+| Kiro IDE | 1.5.11 | 2026-11-20 | Remote SSH, Dev Containers, 클라우드 세션을 IDE에서 열기 |
+| Kiro CLI | 3.5.0 | 2026-11-17 | V3 하네스 기본 (3.0.0부터). V2는 `kiro-cli --v2` |
 
 ## 최근 Kiro 주요 변경 (가이드 관련)
 
 | 날짜 | 제품 | 버전 | 내용 |
 |------|------|------|------|
+| 2026-11-20 | IDE | 1.5.11 | **원격 개발**: Remote SSH, Dev Containers, 클라우드 세션 **Open in IDE** → [원격 개발](/ide/remote-development) |
+| 2026-11-19 | 확장 | 1.5.0 | **Kiro for VS Code** (VS Code 1.145+, 모든 플랜 포함) |
+| 2026-11-19 | General | — | 클라우드 세션의 Amazon VPC 연결 (Enterprise, Preview, `us-east-1`) |
+| 2026-11-18 | IDE | 1.4.236 | GitLab URL로 Power·Skill 설치, Permission Request Hook, Pre Tool Use 입력 교체, MCP 조직 로그인, 채팅 위치 이동 |
+| 2026-11-17 | CLI | 3.5.0 | VPC 클라우드 세션 표시, MCP 조직 로그인(`kiro-cli mcp idp setup`), 로그인 포털(`auth.portalUrl`) |
+| 2026-11-16 | IDE | 1.4.215 | 대화 분기(fork), Workflow 크레딧 표시, 프랑크푸르트 리전 클라우드 세션 |
+| 2026-11-16 | CLI | 3.4.0 | `PreToolUse`의 `updatedInput`, `PermissionRequest` Hook |
+| 2026-11-12 | IDE | 1.4.178 | Workflow 실행 단계별 따라가기, 압축 후 Skill·Steering 다시 불러오기, 큰 Mermaid 다이어그램 가독성 |
+| 2026-11-12 | CLI | 3.3.0 | `/copy N`, `/copy last N`, 자동 압축 기준값(`compaction.autoCompactionThreshold`), V2→V3 에이전트 업그레이드 시 allow 규칙 유지 |
+| 2026-11-11 | CLI | 3.2.1 | 도구 호출 출력 상세도 설정, 그래픽 세션 없는 Linux 로그인 수정 |
+| 2026-11-10 | IDE | 1.4.154 | **Approve for me**와 채팅 권한 모드 메뉴 (Autopilot → Accept file changes) |
+| 2026-11-10 | CLI | 3.2.0 | 전체 화면 다이어그램 뷰어(`/diagram`, `Ctrl+]`), CIMD 방식 MCP 로그인, Workflow loop 추가 반복 |
+| 2026-11-10 | General | — | 크레딧 공유를 Okta·Microsoft Entra ID 프로필로 확대 |
 | 2026-11-05 | IDE | 1.4.121 | Pre/Post Compaction Hook, Workflow Runs 검색, 서브에이전트 메모리 |
 | 2026-11-05 | CLI | 3.1.0 | `PreCompact`/`PostCompact` Hook, `/usage`·상태 표시줄에 세션 크레딧, 세션 요약(opt-in), 서브에이전트가 부모 메모리 읽기 |
 | 2026-11-03 | CLI | 3.0.0 | **V3 하네스 기본**, Classic(V1)·데스크톱 앱·인라인 자동완성 은퇴, Approve for me 포함 |
@@ -44,7 +61,7 @@ sources:
 | — | CLI | 2.8.0 | CLI 3.0 early access |
 | 2026-06 | 요금 | — | Pro Max 플랜 추가 |
 
-[Workflows](/features/workflows) 페이지를 0.2.0에서 추가했습니다.
+[Workflows](/features/workflows) 페이지를 0.2.0에서, [원격 개발](/ide/remote-development) 페이지를 0.3.0에서 추가했습니다.
 
 ## 갱신 방법 (유지보수자용)
 

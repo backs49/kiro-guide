@@ -22,7 +22,7 @@ features:
     details: Kiro가 무엇인지, IDE·CLI·Web이 어떻게 다른지 알아보고 OS별 설치와 로그인, 첫 프로젝트까지 진행합니다.
     link: /intro/what-is-kiro
   - title: 2. IDE · CLI 사용법
-    details: 채팅과 컨텍스트 참조, 모델 선택, Autopilot/Supervised, CLI 대화형 TUI와 Headless 모드(CI 연동)를 다룹니다.
+    details: 채팅과 컨텍스트 참조, 모델 선택, 권한 모드(Supervised·Accept file changes·Approve for me), CLI 대화형 TUI와 Headless 모드(CI 연동)를 다룹니다.
     link: /ide/chat
   - title: 3. 핵심 기능 심화
     details: Specs, Steering, Hooks, MCP, Permissions, Custom agents, Skills, Powers를 설정 파일 경로와 함께 정리했습니다.
